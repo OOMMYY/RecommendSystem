@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>欢迎登入人事档案管理系统</title>
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <script src="./js/jquery-1.11.3.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    	  $("#reset").click(function(){
+    		  $("#userID").val("");
+      		  $("#password").val("");
+    	  });
+    	  $("#submit").click(function(){
+    		  if($("#userID").val()==""||$("#password").val()=="")
+  	    	  {
+  	    		alert("ID或密码不能为空！");
+  	    	  }
+  	    	  else
+  	    	  {
+  	    		$.ajax({
+
+             			type: "POST",
+
+             			url: "login.php",
+
+             			data: {userID:$("#userID").val(), password:$("#password").val()},
+
+             			dataType: "json",
+
+				beforeSend: function () {
+					$('#showreturn').empty();
+					$('#showreturn').html("<b>正在提交数据</b>");
+        
+    				},
+             			success: function(data){
+					
+					alert(data.userID+"  "+data.password);
+
+					                  
+                      		}
+
+        		 });
+  	    	  }
+    	   });
+
+    	});
+
+    	
+    </script>
+  </head>
+  <body background="" style="background-size:100%;">
+    
+    <div class="container" style="padding-top:40px;">
+    	<div class="row" >
+    		<div class="col-md-offset-5 col-md-7" style="padding-bottom:40px">
+   				<img src="" alt="用户头像" class="img-circle">
+   			</div>
+      		<div class="col-md-6 col-md-offset-3" >
+         		<div class="panel panel-primary">
+   					<div class="panel-heading">
+      					<h3 class="panel-title">人事档案管理系统</h3>
+   					</div>
+   					<div class="panel-body" id="showreturn">
+<!-- 表单发送ID和密码 -->
+      					<form class="form-horizontal" id="loginForm" action="" method="post">   
+      						<div class="form-group">
+    							<label for="userID" class="col-md-2 control-label">用户ID</label>
+    							<div class="col-md-10">
+    							<input type="text" name="userID" class="form-control" id="userID" placeholder="请输入用户ID">
+    							</div>
+  							</div>
+  							<div class="form-group">
+    							<label for="password" class="col-md-2 control-label">密码</label>
+    							<div class="col-md-10">
+    							<input type="password" name="password" class="form-control" id="password" placeholder="请输入密码">
+    							</div>
+  							</div>
+  							<div class="form-group">
+    							<div class="col-md-offset-4 col-md-1">
+      								<button id="submit" type="submit" class="btn btn-default">确定</button>
+    							</div>
+    							<div class="col-md-offset-1 col-md-6">
+    								<button type="button" class="btn btn-info" id="reset">重置</button>
+    							</div>
+ 							</div>
+      					</form>
+   					</div>
+				</div>
+      		</div>
+   		</div>
+</div>
+    
+  </body>
+</html>

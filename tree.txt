@@ -1,0 +1,42 @@
+卷 Temp 的文件夹 PATH 列表
+卷序列号为 000000BE 0001:202C
+F:.
+│  404.php
+│  about.html
+│  index.php
+│  login.html
+│  robots.txt
+│  tree.txt
+│  
+├─ajax
+│      login.php
+│      search.php
+│      tools.php
+│      
+├─css
+│      frame.css
+│      
+├─images
+│      404.png
+│      6.jpg
+│      arrow-up.png
+│      background3.jpg
+│      default.jpg
+│      error.png
+│      favicon.ico
+│      foot.png
+│      head.png
+│      loading.gif
+│      logo1.png
+│      password.png
+│      searchLogo1.png
+│      searchLogo2.png
+│      up-to-top.png
+│      user.png
+│      
+└─js
+        jquery-1.11.3.min.js
+        js.js
+        login.js
+        tooltips.js
+        

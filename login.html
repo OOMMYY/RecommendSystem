@@ -1,0 +1,184 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
+<title>图书推荐系统</title>
+
+
+<head>
+<link rel="shortcut icon" href="/images/favicon.ico" >
+<style type="text/css">
+body
+{
+background:url(images/6.jpg) top center no-repeat; background-size:cover;
+}
+*{
+/*border:1px solid white;*/
+}
+#b{
+	margin-top:100px;
+}
+#ls a{
+	cursor: pointer;
+	text-align: center;
+	display: block;
+	float:left;
+	width:50%;
+	height:2em;
+	font:1em/2em "微软雅黑";
+}
+#ls{
+	color:RGB(220,220,220);
+width:30%;	
+padding-right:45px;
+padding-left:45px;
+margin:20px auto;
+overflow:hidden;
+}
+.box{
+background-color:RGBA(220,220,220,0.5); 
+border-radius: 20px;
+
+margin-right: auto;
+margin-left: auto;
+width:30%;
+padding:50px;
+overflow:hidden;
+text-align: center;
+}
+#registerbox{display: none;}
+.logo{
+margin-top:50px;
+text-align:center;
+}
+.onnav{
+	border-bottom:3px solid RGB(220,220,220);
+}
+.inputbox{
+padding-left:2em;
+background-color:RGBA(200,200,200,0.6);
+color:gray;
+font:18px/18px "黑体";
+font-weight:bold;
+width:300px;
+
+height:33px;
+margin:20px auto;
+border:1px solid gray;
+}
+.userinput{
+BACKGROUND-IMAGE: url(/images/user.png); 
+BACKGROUND-REPEAT: no-repeat;
+}
+.passwordinput{
+BACKGROUND-IMAGE: url(/images/password.png); 
+BACKGROUND-REPEAT: no-repeat;
+}
+#Location{
+BACKGROUND-IMAGE: url(/images/location.png); 
+BACKGROUND-REPEAT: no-repeat;
+}
+#Age{
+BACKGROUND-IMAGE: url(/images/age.png); 
+BACKGROUND-REPEAT: no-repeat;
+}
+.submit_btn{
+border:1px solid gray;
+margin-top:10px;
+font:18px/25px "黑体";
+width:100px;
+height:50px;
+background-color:RGBA(200,200,200,0.8);
+color:black;
+border-radius: 10px;
+}
+table{width:100%;margin:0 auto;}
+td{padding-left:15px;padding-right:15px;text-align: center;}
+</style>
+<script language="JavaScript">
+function disp(obj){
+	//alert(obj.innerHTML);
+	obj.className="onnav"; 
+if(obj.innerHTML=="登录"){
+	document.getElementById("registera").className=""; 
+document.getElementById("loginbox").style.display="block";
+document.getElementById("registerbox").style.display="none";
+}else{//alert(obj);
+	document.getElementById("logina").className=""; 
+document.getElementById("loginbox").style.display="none";
+document.getElementById("registerbox").style.display="block";
+}
+}
+
+</script>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/tooltips.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+</head>
+<body >
+<div class="logo">
+<a href="login.html"><img height="50px"  src="/images/logo1.png"></a>
+</div>
+<div id="b">
+<div id="ls">
+<a id="logina" onclick="disp(this)" class="onnav">登录</a>
+<a id="registera" onclick="disp(this)">注册</a>
+</div>
+<div id="loginbox" class="box";>
+<form id="form" class="form" action="index.php" method="post">
+<table>
+<tr>
+<!--<td>帐号：</td>-->
+<td><input class="inputbox userinput" type="text" id="ID" name="userid" value='账号'
+onfocus="javascript:if(this.value=='账号'){this.value='';this.style.color='black';};"
+onblur="if(this.value==''){this.style.color='gray';this.value='账号'}"></td>
+</tr>
+<tr>
+<!--<td>密码：</td>-->
+<td><input class="inputbox passwordinput" type="text" id="password" name="password"
+value='密码' 
+onfocus="javascript:if(this.value=='密码'){this.type='password';this.value='';this.style.color='black';};"
+onblur="if(this.value==''){this.type='text';this.style.color='gray';this.value='密码'}"
+></td>
+</tr>
+</table>
+<table>
+<tr>
+<td><button type="button"  id="submit_btn" class="submit_btn">登录</button></td>
+</tr>
+</table>
+</form>
+</div>
+
+<div id="registerbox" class="box";>
+<table>
+<tr>
+<!--<td>所在地：</td>-->
+<td><input class="inputbox" type="text" id="Location" name="Location" value='所在地'
+onfocus="javascript:if(this.value=='所在地'){this.value='';this.style.color='black';};"
+onblur="if(this.value==''){this.style.color='gray';this.value='所在地'}"></td>
+</tr>
+<tr>
+<!--<td>年龄：</td>-->
+<td><input class="inputbox" type="text" id="Age" name="Age" value='年龄'
+onfocus="javascript:if(this.value=='年龄'){this.value='';this.style.color='black';};"
+onblur="if(this.value==''){this.style.color='gray';this.value='年龄'}"></td>
+</tr>
+<tr>
+<!--<td>密码：</td>-->
+<td><input class="inputbox passwordinput" type="text" id="password1" name="password1"
+value='密码' 
+onfocus="javascript:if(this.value=='密码'){this.type='password';this.value='';this.style.color='black';};"
+onblur="if(this.value==''){this.type='text';this.style.color='gray';this.value='密码'}"
+></td>
+</tr>
+</table>
+<table>
+<tr>
+<td><button type="button"  id="submit_btn1" class="submit_btn">注册</button></td>
+</tr>
+</table>
+</div>
+
+
+</div>
+</body>
+</html>

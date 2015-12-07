@@ -1,0 +1,69 @@
+﻿
+
+function getRecommendData($id){
+	getDatabaseConnect($con);
+	$data="";
+	/*
+$sql="select book_id,book_name from books natural join (SELECT distinct book_id FROM rents  where student_id in (select concern_id from concerns where student_id=$id))as book_ids";
+$result = $con->query($sql);
+
+while($row=$result->fetch_array()){
+	$data=$data.$row['book_id'];
+	$data=$data.",";
+}*/
+/*$sql="select book_id,book_name from books natural join 
+(SELECT distinct book_id FROM rents  where student_id in (
+select concern_id from concerns where student_id in
+(select concern_id from concerns where student_id=$id)))as book_ids";
+*/
+$sql="select `Age` from `bx-users` where `User-ID`=$id";
+$result = $con->query($sql);
+$row=$result->fetch_array();
+$age=$row['Age'];
+if($age!=null){
+	for($i=$age-3;$i<=$age+2;$i++){
+		$sql="select `ISBN` from `bx-users` natural join `bx-book-ratings` as `user-rating` where `Age`=$i";
+$result = $con->query($sql);
+$x=0;
+while($row=$result->fetch_array()){
+	$data=$data.$row['ISBN'];
+	$data=$data.",";
+	if($x==3)break;
+	$x++;
+}
+	}
+
+}
+/*mysql_close($con);*/
+$con->close();
+return $data;
+}
+
+
+function getRecommend_old($id){
+	getDatabaseConnect($con);
+	$data=getRecommendData($id);
+	/*writeFile($data);
+	echo $data;*/
+	$array=array();
+	$array=(explode(",",$data));
+	/*writeFile($array);
+	print_r($array);*/
+	$div="";
+	$x=0;
+	for($i=0;$i<=count($array)-2;$i++){
+		$bookname_query="select * from `bx-books` where `ISBN`=$array[$i]";
+		$bookname_result=$con->query($bookname_query);
+		if(!$bookname_result)continue;
+		$bookname_row =$bookname_result->fetch_array();
+		if($bookname_row){
+			$div=$div.createImgDivByRow($bookname_row );
+		}
+		if($x==10)break;
+		$x++;
+    }
+	/*writeFile($div);
+	echo $div;*/
+	$con->close();
+	return $div;
+}
